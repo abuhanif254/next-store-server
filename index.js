@@ -17,6 +17,7 @@ let items = [
         name: "Wireless Headphones",
         description: "High-quality wireless headphones with noise cancellation.",
         price: 99.99,
+        category: "Electronics",
         image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&q=80&w=600"
     },
     {
@@ -24,6 +25,7 @@ let items = [
         name: "Smart Watch",
         description: "Feature-rich smartwatch with health tracking.",
         price: 149.99,
+        category: "Electronics",
         image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&q=80&w=600"
     },
     {
@@ -31,6 +33,7 @@ let items = [
         name: "Mechanical Keyboard",
         description: "Tactile mechanical keyboard for typing and gaming.",
         price: 79.99,
+        category: "Electronics",
         image: "https://images.unsplash.com/photo-1587829741301-dc798b91a91e?auto=format&fit=crop&q=80&w=600"
     },
     {
@@ -38,6 +41,7 @@ let items = [
         name: "Gaming Mouse",
         description: "Ergonomic gaming mouse with high DPI.",
         price: 49.99,
+        category: "Electronics",
         image: "https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&q=80&w=600"
     },
     {
@@ -45,6 +49,7 @@ let items = [
         name: "Laptop Stand",
         description: "Adjustable laptop stand for ergonomic viewing.",
         price: 29.99,
+        category: "Home",
         image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&q=80&w=600"
     },
     {
@@ -52,6 +57,7 @@ let items = [
         name: "USB-C Hub",
         description: "Multi-port USB-C hub for connectivity.",
         price: 39.99,
+        category: "Electronics",
         image: "https://images.unsplash.com/photo-1628859747806-03c7349b142d?auto=format&fit=crop&q=80&w=600"
     },
     {
@@ -59,6 +65,7 @@ let items = [
         name: "Desk Lamp",
         description: "LED desk lamp with adjustable brightness.",
         price: 24.99,
+        category: "Home",
         image: "https://images.unsplash.com/photo-1534073828943-f801091a7d58?auto=format&fit=crop&q=80&w=600"
     }
 ];
@@ -83,7 +90,7 @@ app.post('/api/items', (req, res) => {
     if (!name || !price) {
         return res.status(400).json({ message: 'Name and price are required' });
     }
-    
+
     const newItem = {
         id: items.length + 1,
         name,
@@ -91,7 +98,7 @@ app.post('/api/items', (req, res) => {
         price,
         image: image || "https://images.unsplash.com/photo-1517336714731-489689fd1ca4?auto=format&fit=crop&q=80&w=600" // Default image
     };
-    
+
     items.push(newItem);
     res.status(201).json(newItem);
 });
@@ -102,11 +109,11 @@ app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
     // Hardcoded credentials for mock login
     if (email === 'test@example.com' && password === 'password123') {
-        res.json({ 
-            success: true, 
-            message: 'Login successful', 
+        res.json({
+            success: true,
+            message: 'Login successful',
             user: { email: 'test@example.com', name: 'Test User' },
-            token: 'mock-jwt-token-xyz-123' 
+            token: 'mock-jwt-token-xyz-123'
         });
     } else {
         res.status(401).json({ success: false, message: 'Invalid credentials' });
