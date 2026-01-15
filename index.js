@@ -72,6 +72,11 @@ let items = [
 
 // Routes
 
+// Root route for Vercel health check
+app.get('/', (req, res) => {
+    res.send('NextStore Server is Running! API available at /api/items');
+});
+
 // Get all items
 app.get('/api/items', (req, res) => {
     res.json(items);
